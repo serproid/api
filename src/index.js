@@ -51,6 +51,10 @@ function requestToken(request, dados) {
   return dados.token ?? (bearer ? bearer[1] : "");
 }
 
+function configuredToken(env) {
+  return env.VITE_PENDENCY_API_TOKEN || env.API_TOKEN || "";
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -78,7 +82,7 @@ export default {
       return json({ erro: "O corpo deve ser um JSON." }, 400);
     }
 
-    if (requestToken(request, dados) !== env.VITE_PENDENCY_API_TOKEN) {
+    if (requestToken(request, dados) !== configuredToken(env)) {
       return json({ erro: "Token inválido." }, 401);
     }
 
