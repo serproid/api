@@ -1,0 +1,9 @@
+name = "serproid-api"
+main = "src/index.js"
+compatibility_date = "2026-09-11"
+
+[observability]
+enabled = true
+
+# Configure o token sem publicá-lo no GitHub:
+# npx wrangler secret put API_TOKEN
