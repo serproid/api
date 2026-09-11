@@ -44,7 +44,7 @@ O token não fica no código nem no GitHub. Depois de autenticar o Wrangler na s
 
 ```bash
 npx wrangler login
-npx wrangler secret put API_TOKEN
+npx wrangler secret put VITE_PENDENCY_API_TOKEN
 ```
 
 Quando o terminal solicitar o valor, informe exatamente:
@@ -66,7 +66,7 @@ npm run deploy
 Crie `.dev.vars` (esse arquivo é ignorado pelo Git):
 
 ```text
-API_TOKEN=vwduX4pck725Eat44jYRW8Qob8GmPjbz
+VITE_PENDENCY_API_TOKEN=vwduX4pck725Eat44jYRW8Qob8GmPjbz
 ```
 
 Depois execute:

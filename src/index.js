@@ -78,7 +78,7 @@ export default {
       return json({ erro: "O corpo deve ser um JSON." }, 400);
     }
 
-    if (requestToken(request, dados) !== env.API_TOKEN) {
+    if (requestToken(request, dados) !== env.VITE_PENDENCY_API_TOKEN) {
       return json({ erro: "Token inválido." }, 401);
     }
 
