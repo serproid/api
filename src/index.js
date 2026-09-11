@@ -1,10 +1,23 @@
 const DEFAULT_VALUE = "37,40";
+const CORS_HEADERS = {
+  "access-control-allow-origin": "*",
+  "access-control-allow-methods": "GET, POST, OPTIONS",
+  "access-control-allow-headers": "Content-Type, Authorization",
+  "access-control-max-age": "86400",
+};
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { "content-type": "application/json; charset=utf-8" },
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      ...CORS_HEADERS,
+    },
   });
+}
+
+function corsPreflight() {
+  return new Response(null, { status: 204, headers: CORS_HEADERS });
 }
 
 function normalizeCpf(documento) {
@@ -35,6 +48,10 @@ function validTimestamp(timestamp) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (request.method === "OPTIONS" && url.pathname === "/consulta") {
+      return corsPreflight();
+    }
 
     if (request.method === "GET" && url.pathname === "/health") {
       return json({ status: "ok" });
