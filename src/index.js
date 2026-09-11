@@ -1,6 +1,6 @@
 const DEFAULT_VALUE = "37,40";
 const CORS_HEADERS = {
-  "access-control-allow-origin": "https://seu-dominio.com",
+  "access-control-allow-origin": "https://serproid.pages.dev",
   "access-control-allow-methods": "POST, OPTIONS",
   "access-control-allow-headers": "Content-Type, Authorization",
   "access-control-max-age": "86400",
