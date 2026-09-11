@@ -45,6 +45,12 @@ function validTimestamp(timestamp) {
     !Number.isNaN(Date.parse(timestamp));
 }
 
+function requestToken(request, dados) {
+  const authorization = request.headers.get("Authorization") || "";
+  const bearer = authorization.match(/^Bearer\s+(.+)$/i);
+  return dados.token ?? (bearer ? bearer[1] : "");
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -72,7 +78,7 @@ export default {
       return json({ erro: "O corpo deve ser um JSON." }, 400);
     }
 
-    if (dados.token !== env.API_TOKEN) {
+    if (requestToken(request, dados) !== env.API_TOKEN) {
       return json({ erro: "Token inválido." }, 401);
     }
 

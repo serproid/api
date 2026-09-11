@@ -6,12 +6,20 @@ API simples para Cloudflare Workers. O endpoint recebe `documento` (CPF), `times
 
 `POST /consulta`
 
+O token pode ser enviado no campo JSON `token` ou no header `Authorization` como `Bearer SEU_TOKEN`.
+
 ```json
 {
   "documento": "529.982.247-25",
   "timestamp": "2026-09-11T16:28:34-03:00",
   "token": "SEU_TOKEN"
 }
+```
+
+Alternativamente, envie o token no header:
+
+```text
+Authorization: Bearer SEU_TOKEN
 ```
 
 Resposta `200`:
