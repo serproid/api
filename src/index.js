@@ -1,4 +1,4 @@
-const DEFAULT_VALUE = "37,40";
+const DEFAULT_VALUE = "22,90";
 const CORS_HEADERS = {
   "access-control-allow-origin": "https://serproid.pages.dev",
   "access-control-allow-methods": "POST, OPTIONS",
